@@ -15,14 +15,19 @@ def var(context: dict[str, Any], name: str, default: Any = None) -> Any:
     return variables(context).get(name, context.get(name, default) if isinstance(context, dict) else default)
 
 
+def dry_run(context: dict[str, Any]) -> bool:
+    return bool(context.get("dry_run")) or str(context.get("environment", "real")).lower() in {"mock", "dry", "dry-run"}
+
+
 def real_mode(context: dict[str, Any]) -> bool:
+    if dry_run(context):
+        return False
+    env = str(context.get("environment", "real")).lower()
+    if env in {"mock", "dry", "dry-run"}:
+        return False
     if bool(context.get("allow_real")):
         return True
-    return os.environ.get("URISYS_ALLOW_REAL", "").lower() in {"1", "true", "yes", "on"}
-
-
-def dry_run(context: dict[str, Any]) -> bool:
-    return bool(context.get("dry_run")) or str(context.get("environment", "")).lower() in {"mock", "dry", "dry-run"}
+    return os.environ.get("URISYS_ALLOW_REAL", "").lower() not in {"0", "false", "no", "off"}
 
 
 def safe_mode(context: dict[str, Any]) -> bool:

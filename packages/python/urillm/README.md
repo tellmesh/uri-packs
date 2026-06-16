@@ -15,4 +15,4 @@ urisys explain llm://demo/query/status --packs llm
 urisys call llm://demo/query/status --packs llm
 ```
 
-Real side effects are blocked by default. Use `--approve` for approved commands and `--allow-real` only when you intentionally want real OS/device actions.
+Real execution is the default. Use `--approve` for mutations. Use `--dry-run` or `--environment mock` to simulate.

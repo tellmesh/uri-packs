@@ -15,4 +15,4 @@ urisys explain browser://demo/query/status --packs browser
 urisys call browser://demo/query/status --packs browser
 ```
 
-Real side effects are blocked by default. Use `--approve` for approved commands and `--allow-real` only when you intentionally want real OS/device actions.
+Real execution is the default. Use `--approve` for mutations. Use `--dry-run` or `--environment mock` to simulate.

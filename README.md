@@ -70,3 +70,8 @@ urisys --packs docker call docker://container/web/command/restart \
 ```
 
 Dokumentacja runtime i Markpact: [`../urisys/README.md`](../urisys/README.md)
+
+
+## License
+
+Licensed under Apache-2.0.
