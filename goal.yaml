@@ -222,7 +222,7 @@ strategies:
     test: ./scripts/smoke-test.sh
     build: echo uri-packs monorepo
     publish: ./scripts/publish-all.sh
-    publish_enabled: true
+    publish_enabled: false
     dependencies:
       file: requirements.txt
       lock: pip freeze > requirements.txt
@@ -230,7 +230,7 @@ strategies:
     test: npm test
     build: npm run build
     publish: npm publish
-    publish_enabled: true
+    publish_enabled: false
     dependencies:
       file: package-lock.json
       lock: npm install
@@ -238,7 +238,7 @@ strategies:
     test: cargo test
     build: cargo build --release
     publish: cargo publish
-    publish_enabled: true
+    publish_enabled: false
     dependencies:
       file: Cargo.lock
       lock: cargo update
